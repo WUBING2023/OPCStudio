@@ -1,0 +1,53 @@
+name: Release Windows installer
+
+on:
+  push:
+    tags:
+      - "v*"
+
+permissions:
+  contents: write
+
+jobs:
+  build-and-publish:
+    runs-on: windows-latest
+    timeout-minutes: 60
+    steps:
+      - name: Checkout tagged source
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 24
+
+      - name: Set up pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          version: 11.7.0
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Build Windows installer
+        run: pnpm run build:electron
+
+      - name: Smoke test packaged runtime
+        run: pnpm release:smoke
+
+      - name: Write SHA-256 file
+        shell: pwsh
+        run: |
+          $installer = "electron-app/release/OPC-Studio-Private-Alpha-0.1.0-x64.exe"
+          $hash = (Get-FileHash -Algorithm SHA256 -LiteralPath $installer).Hash.ToLowerInvariant()
+          "$hash  OPC-Studio-Private-Alpha-0.1.0-x64.exe" | Set-Content -Encoding ascii "$installer.sha256"
+
+      - name: Publish release assets
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: ${{ github.ref_name }}
+          overwrite_files: true
+          fail_on_unmatched_files: true
+          files: |
+            electron-app/release/OPC-Studio-Private-Alpha-0.1.0-x64.exe
+            electron-app/release/OPC-Studio-Private-Alpha-0.1.0-x64.exe.sha256
