@@ -1,0 +1,29 @@
+[
+  { "id": "mr-ceo", "name": "研究总监", "role": "ceo", "companyId": "my-research",
+    "childrenIds": ["mr-lead"], "framework": "hermes", "provider": "deepseek", "model": "deepseek-v4-pro",
+    "status": "idle", "tokenUsage": {"prompt":0,"completion":0,"total":0}, "costUsd": 0, "editable": true, "deletable": true, "enabled": true },
+
+  { "id": "mr-lead", "name": "研究主管", "role": "lead", "companyId": "my-research", "parentId": "mr-ceo",
+    "childrenIds": ["mr-r1","mr-r2","mr-r3","mr-fc","mr-synth"], "framework": "hermes", "provider": "deepseek", "model": "deepseek-v4-pro",
+    "status": "idle", "tokenUsage": {"prompt":0,"completion":0,"total":0}, "costUsd": 0, "editable": true, "deletable": true, "enabled": true },
+
+  { "id": "mr-r1", "name": "核心研究员(定量/一手证据)", "role": "dev", "companyId": "my-research", "parentId": "mr-lead",
+    "childrenIds": [], "framework": "hermes", "provider": "deepseek", "model": "deepseek-v4-pro",
+    "status": "idle", "tokenUsage": {"prompt":0,"completion":0,"total":0}, "costUsd": 0, "editable": true, "deletable": true, "enabled": true },
+
+  { "id": "mr-r2", "name": "背景调研员(上下文/文献)", "role": "dev", "companyId": "my-research", "parentId": "mr-lead",
+    "childrenIds": [], "framework": "hermes", "provider": "deepseek", "model": "deepseek-v4-pro",
+    "status": "idle", "tokenUsage": {"prompt":0,"completion":0,"total":0}, "costUsd": 0, "editable": true, "deletable": true, "enabled": true },
+
+  { "id": "mr-r3", "name": "数据分析员(对比/数据)", "role": "dev", "companyId": "my-research", "parentId": "mr-lead",
+    "childrenIds": [], "framework": "hermes", "provider": "deepseek", "model": "deepseek-v4-pro",
+    "status": "idle", "tokenUsage": {"prompt":0,"completion":0,"total":0}, "costUsd": 0, "editable": true, "deletable": true, "enabled": true },
+
+  { "id": "mr-fc", "name": "事实核查员", "role": "fact_checker", "companyId": "my-research", "parentId": "mr-lead",
+    "childrenIds": [], "framework": "hermes", "provider": "deepseek", "model": "deepseek-reasoner",
+    "status": "idle", "tokenUsage": {"prompt":0,"completion":0,"total":0}, "costUsd": 0, "editable": true, "deletable": true, "enabled": true },
+
+  { "id": "mr-synth", "name": "综合撰写员", "role": "dev", "companyId": "my-research", "parentId": "mr-lead",
+    "childrenIds": [], "framework": "hermes", "provider": "deepseek", "model": "deepseek-v4-pro",
+    "status": "idle", "tokenUsage": {"prompt":0,"completion":0,"total":0}, "costUsd": 0, "editable": true, "deletable": true, "enabled": true }
+]

@@ -1,0 +1,86 @@
+{
+  "id": "legacy-flat-drill-v0",
+  "title": "迁移演练·历史扁平模板",
+  "description": "冻结的历史形态样本:bundle 信封出现之前(无 schema_version)社区流通的扁平 CompanyTemplate。此文件是《数据兼容宪法》迁移演练(bundleMigrationDrill.test.ts)的常驻输入,永不删除、永不改动;任何 schema/迁移注册表改动若让它无法升格到 canonical 并完成安装,即为破坏历史兼容。",
+  "author": "drill-fixture",
+  "createdAt": "2026-05-01T00:00:00.000Z",
+  "tags": ["legacy", "fixture", "migration-drill"],
+  "downloads": 7,
+  "stars": 2,
+  "readme": "历史模板:CEO + 订阅制工程师 + API 质检员,带验证边/预置通道/打包技能/MCP 声明。",
+  "version": "0.9.0",
+  "agents": [
+    {
+      "id": "ceo-0",
+      "name": "统筹官",
+      "role": "ceo",
+      "childrenIds": ["dev-0", "qa-0"],
+      "model": "deepseek-v4-pro",
+      "provider": "deepseek",
+      "framework": "hermes",
+      "status": "idle",
+      "tokenUsage": { "prompt": 0, "completion": 0, "total": 0 },
+      "editable": true,
+      "deletable": false,
+      "enabled": true
+    },
+    {
+      "id": "dev-0",
+      "name": "订阅工程师",
+      "role": "dev",
+      "parentId": "ceo-0",
+      "childrenIds": [],
+      "model": "sonnet",
+      "provider": "anthropic",
+      "framework": "claude-code",
+      "status": "idle",
+      "tokenUsage": { "prompt": 0, "completion": 0, "total": 0 },
+      "editable": true,
+      "deletable": true,
+      "enabled": true
+    },
+    {
+      "id": "qa-0",
+      "name": "质检员",
+      "role": "qa",
+      "parentId": "ceo-0",
+      "childrenIds": [],
+      "model": "deepseek-v4-flash",
+      "provider": "deepseek",
+      "framework": "hermes",
+      "status": "idle",
+      "tokenUsage": { "prompt": 0, "completion": 0, "total": 0 },
+      "editable": true,
+      "deletable": true,
+      "enabled": true
+    }
+  ],
+  "recommendedConfig": {
+    "defaultModel": "deepseek-v4-pro",
+    "permissions": { "allowShell": false, "allowFileWrite": true, "allowWebAccess": false }
+  },
+  "useCases": ["历史模板迁移演练"],
+  "riskNotes": ["仅供回归测试"],
+  "toolRequirements": {
+    "requiredEngines": ["hermes", "claude-code"],
+    "requiredProviders": ["deepseek", "anthropic"],
+    "requiredMcpServers": [],
+    "requiredSkills": [],
+    "optionalTools": []
+  },
+  "workflow": {
+    "verificationEdges": [
+      { "producer": "dev", "verifier": "qa", "method": "code-review", "onReject": "redo", "maxRounds": 2 }
+    ]
+  },
+  "bundledSkills": [
+    {
+      "name": "release-checklist",
+      "description": "发布前检查单",
+      "content": "发布前先跑冒烟测试,再灰度放量。",
+      "roles": ["dev"]
+    }
+  ],
+  "mcpRequirements": [{ "name": "filesystem", "purpose": "读写工作区", "optional": true }],
+  "a2aChannels": [{ "from": "ceo", "to": "dev", "purpose": "任务下发" }]
+}

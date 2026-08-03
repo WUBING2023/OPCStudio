@@ -1,0 +1,72 @@
+name: CI
+
+# Canonical toolchain, pinned (never floats) and kept in sync with the root
+# package.json `engines`:
+#   - Node 24.x   (matches engines.node "24.x"; do NOT float to lts/latest)
+#   - pnpm 11.7.0 (matches packageManager)
+# pnpm-lock.yaml remains lockfileVersion 9.0, which pnpm 11 reads natively.
+#
+# Runner is ubuntu-latest. Deliberately NOT exercised on this Linux runner, and
+# left to the Windows-only desktop live matrix:
+#   - The Electron NSIS installer (electron-builder --win nsis) and its
+#     desktop-install round-trip.
+#   - The `taskkill /pid <pid> /T /F` server-tree teardown branch in
+#     electron-app/main.js (Windows-specific; the POSIX group-kill path is a
+#     different code branch). CI cannot prove the Windows taskkill path.
+#   - scripts/electron-smoke.mjs (Electron-as-Node server acceptance). It is
+#     cross-platform in principle, but the Electron binary needs a full desktop
+#     library set even under ELECTRON_RUN_AS_NODE, so it stays a local/Windows
+#     matrix step rather than a bare ubuntu CI step.
+# The pipeline below is: install -> typecheck -> vitest -> e2e mock-smoke ->
+# build -> assert artifacts -> release smoke (packaged server boot + health +
+# create-company/list/runs round-trip).
+
+on:
+  push:
+    branches: ["**"]
+  pull_request:
+
+jobs:
+  build-and-test:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          version: 11.7.0
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: pnpm
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Typecheck (all packages)
+        run: pnpm -r typecheck
+
+      - name: Unit + integration tests (vitest)
+        run: pnpm test
+
+      - name: Mock smoke — orchestrator (model calls mocked, state machine real)
+        run: pnpm --filter @opc/server e2e
+
+      - name: Build compiled server + shared
+        run: |
+          pnpm --filter @opc/shared build
+          pnpm --filter @opc/server build
+
+      - name: Assert build artifacts exist
+        run: |
+          test -f packages/shared/dist/index.js
+          test -f apps/server/dist/index.js
+          echo "build artifacts present"
+
+      - name: Release smoke
+        run: pnpm release:smoke

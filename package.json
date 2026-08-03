@@ -1,0 +1,40 @@
+{
+  "name": "opc-studio",
+  "private": true,
+  "version": "0.1.0",
+  "description": "OPC Studio — Multi-Agent Project Cockpit",
+  "main": "electron-app/main.js",
+  "scripts": {
+    "dev": "concurrently -n server,web -c blue,green \"pnpm run dev:server\" \"pnpm run dev:web\"",
+    "dev:server": "pnpm --filter @opc/server dev",
+    "dev:web": "pnpm --filter @opc/web dev",
+    "build": "pnpm --filter @opc/shared build && pnpm --filter @opc/server build && pnpm --filter @opc/cli build && pnpm --filter @opc/web build",
+    "typecheck": "pnpm -r typecheck",
+    "test": "vitest run",
+    "test:security-gate": "node scripts/security-release-gate.mjs",
+    "test:release-gate": "pnpm run test:security-gate && node scripts/phase6-release-matrix.mjs",
+    "test:two-stage-release-gate": "node scripts/two-stage-release-gate.mjs",
+    "cli": "pnpm --filter @opc/cli start",
+    "electron:dev": "electron electron-app",
+    "stage:server-bundle": "pnpm run stage:runtime-bundles",
+    "build:electron": "pnpm run build && pnpm run stage:runtime-bundles && node scripts/verify-server-bundle.mjs && node scripts/verify-cli-bundle.mjs && cd electron-app && electron-builder --win nsis",
+    "release:smoke": "node scripts/release-smoke.mjs",
+    "stage:runtime-bundles": "node -e \"require('fs').rmSync('electron-app/server-bundle',{recursive:true,force:true})\" && pnpm --filter @opc/server --legacy --config.node-linker=hoisted deploy --prod electron-app/server-bundle && node scripts/stage-cli-runtime.mjs && node scripts/stage-node-runtime.mjs"
+  },
+  "dependencies": {
+    "@xterm/addon-fit": "^0.11.0",
+    "xterm": "^5.3.0"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.61.1",
+    "concurrently": "^9.1.2",
+    "electron": "^42.4.1",
+    "electron-builder": "^26.15.3",
+    "vitest": "^2.1.9"
+  },
+  "packageManager": "pnpm@11.7.0",
+  "engines": {
+    "node": "24.x",
+    "pnpm": "11.7.0"
+  }
+}

@@ -1,0 +1,16 @@
+packages:
+  - "apps/*"
+  - "packages/*"
+verifyDepsBeforeRun: false
+allowBuilds:
+  # esbuild 的原生 postinstall 明确禁跑(vitest 用 esbuild 转译,不需要它的原生二进制构建脚本)。
+  esbuild: false
+  # electron-winstaller(Windows 安装包打包工具,已作为传递依赖装了 5.4.0)显式禁跑其构建脚本:
+  # 桌面 NSIS/Squirrel 打包属 Private Alpha 后续项(见发布口径 G5),主路径未接,安装时不需要它跑构建。
+  # 必须给显式布尔(而非原 "set this to true or false" 非法占位——占位串会让 pnpm 布尔 schema 出错或
+  # 被当真值静默放行构建脚本);显式 false 同时消掉 pnpm 的 ERR_PNPM_IGNORED_BUILDS 待决提示。
+  electron-winstaller: false
+  # 钉住单一 @types/node:25.x 破坏了 ChildProcess 的 EventEmitter 继承类型(proc.on 报错);
+  # 24.13.2 是上轮 tsc=0 时的版本,锁回它消除传递依赖漂移。
+overrides:
+  "@types/node": "24.13.2"

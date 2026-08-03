@@ -1,0 +1,144 @@
+{
+  "schemaVersion": 1,
+  "kind": "opc-embedded-ui",
+  "name": "opc-studio-run-review",
+  "version": "0.1.0",
+  "optional": true,
+  "featureFlag": "OPC_EMBEDDED_PLUGIN_UI",
+  "entrypoint": "#/ecosystem?run={runId}&company={companyId}",
+  "cards": [
+    {
+      "id": "run-status",
+      "mode": "read-only",
+      "source": {
+        "http": "GET /api/runs/{runId}",
+        "mcpTools": [
+          "get_run_status"
+        ]
+      },
+      "canonicalState": "Run.status",
+      "refresh": {
+        "method": "GET",
+        "createsRun": false
+      }
+    },
+    {
+      "id": "approval",
+      "mode": "explicit-confirmation",
+      "source": {
+        "http": "GET /api/governance/runs/{runId}",
+        "mcpTools": [
+          "get_run_status"
+        ]
+      },
+      "actions": [
+        {
+          "id": "approve",
+          "http": "POST /api/governance/runs/{runId}/approve",
+          "mcpTool": "review_run",
+          "explicitConfirmation": true,
+          "createsRun": false
+        },
+        {
+          "id": "reject",
+          "http": "POST /api/governance/runs/{runId}/reject",
+          "mcpTool": "review_run",
+          "explicitConfirmation": true,
+          "createsRun": false
+        }
+      ],
+      "refresh": {
+        "method": "GET",
+        "createsRun": false
+      },
+      "headlessFallback": "formal-opc-control-plane"
+    },
+    {
+      "id": "artifacts",
+      "mode": "read-only",
+      "source": {
+        "http": "GET /api/runs/{runId}/artifacts and server-limited preview by artifactId",
+        "mcpTools": [
+          "list_artifacts",
+          "get_artifact"
+        ]
+      },
+      "refresh": {
+        "method": "GET",
+        "createsRun": false
+      }
+    },
+    {
+      "id": "evidence",
+      "mode": "read-only",
+      "source": {
+        "http": "GET /api/runs/{runId}/evidence",
+        "mcpTools": [
+          "get_evidence"
+        ]
+      },
+      "refresh": {
+        "method": "GET",
+        "createsRun": false
+      }
+    },
+    {
+      "id": "company-plan",
+      "mode": "explicit-confirmation",
+      "source": {
+        "kind": "server-persisted-bound-proposal",
+        "http": "GET /api/companies/{companyId}/architect-proposals/{proposalId}",
+        "requiredBindings": [
+          "proposalId",
+          "companyId",
+          "beforeHash",
+          "actionsHash",
+          "expiresAt"
+        ],
+        "mcpTools": [
+          "list_company_plans",
+          "get_company_plan",
+          "inspect_company",
+          "inspect_capabilities"
+        ]
+      },
+      "actions": [
+        {
+          "id": "apply",
+          "http": "POST /api/companies/{companyId}/architect-apply",
+          "mcpTool": "apply_company_plan",
+          "explicitConfirmation": true,
+          "createsRun": false,
+          "serverRevalidatesBindings": true
+        }
+      ],
+      "refresh": {
+        "method": "GET",
+        "createsRun": false
+      },
+      "headlessFallback": "opc-company-design plus bound MCP proposal tools"
+    }
+  ],
+  "headless": {
+    "requiresEmbeddedUi": false,
+    "skills": [
+      "opc-team-run",
+      "opc-run-review",
+      "opc-company-design"
+    ],
+    "mcpServer": "opc-studio",
+    "limitation": "High-risk Company Plan changes require a second apply call with the short-lived confirmation receipt returned by OPC Core."
+  },
+  "security": {
+    "transport": "existing OPC HTTP API or opc-mcp only",
+    "forbiddenSources": [
+      "local-files",
+      "credentials",
+      "api-keys",
+      "auth-files",
+      "memory-store"
+    ],
+    "artifactAccess": "recorded artifactId through server-limited preview only",
+    "refreshPolicy": "GET-only; never call start_run or create a Run"
+  }
+}

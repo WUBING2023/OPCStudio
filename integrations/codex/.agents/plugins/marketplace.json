@@ -1,0 +1,20 @@
+{
+  "name": "opc-studio-codex",
+  "interface": {
+    "displayName": "OPC Studio Local"
+  },
+  "plugins": [
+    {
+      "name": "opc-studio",
+      "source": {
+        "source": "local",
+        "path": "./plugins/opc-studio"
+      },
+      "policy": {
+        "installation": "AVAILABLE",
+        "authentication": "ON_USE"
+      },
+      "category": "Productivity"
+    }
+  ]
+}

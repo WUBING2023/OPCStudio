@@ -1,0 +1,21 @@
+[
+  { "id": "mc-ceo", "name": "CEO", "role": "ceo", "companyId": "my-coding",
+    "childrenIds": ["mc-lead"], "framework": "api", "provider": "minimax", "model": "MiniMax-M3",
+    "status": "idle", "tokenUsage": {"prompt":0,"completion":0,"total":0}, "costUsd": 0, "editable": true, "deletable": true, "enabled": true },
+
+  { "id": "mc-lead", "name": "技术主管", "role": "lead", "companyId": "my-coding", "parentId": "mc-ceo",
+    "childrenIds": ["mc-dev","mc-test","mc-review"], "framework": "claude-code", "provider": "anthropic", "model": "sonnet",
+    "status": "idle", "tokenUsage": {"prompt":0,"completion":0,"total":0}, "costUsd": 0, "editable": true, "deletable": true, "enabled": true },
+
+  { "id": "mc-dev", "name": "工程师", "role": "dev", "companyId": "my-coding", "parentId": "mc-lead",
+    "childrenIds": [], "framework": "claude-code", "provider": "anthropic", "model": "sonnet",
+    "status": "idle", "tokenUsage": {"prompt":0,"completion":0,"total":0}, "costUsd": 0, "editable": true, "deletable": true, "enabled": true },
+
+  { "id": "mc-test", "name": "测试工程师", "role": "test", "companyId": "my-coding", "parentId": "mc-lead",
+    "childrenIds": [], "framework": "api", "provider": "deepseek", "model": "deepseek-v4-pro",
+    "status": "idle", "tokenUsage": {"prompt":0,"completion":0,"total":0}, "costUsd": 0, "editable": true, "deletable": true, "enabled": true },
+
+  { "id": "mc-review", "name": "Codex 代码核查", "role": "code_reviewer", "companyId": "my-coding", "parentId": "mc-lead",
+    "childrenIds": [], "framework": "codex", "provider": "openai", "model": "gpt-5.5", "reasoningEffort": "high",
+    "status": "idle", "tokenUsage": {"prompt":0,"completion":0,"total":0}, "costUsd": 0, "editable": true, "deletable": true, "enabled": true }
+]

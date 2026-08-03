@@ -1,0 +1,59 @@
+{
+  "name": "opc-studio-electron",
+  "version": "0.1.0",
+  "description": "OPC Studio - Multi-Agent Project Cockpit",
+  "author": "OPC Studio Contributors",
+  "private": true,
+  "main": "main.js",
+  "_stagingNote": "`server-bundle/` is produced by the repo-root `build:electron` script (pnpm deploy of @opc/server — a self-contained dist + node_modules incl. @opc/shared/dist). Do NOT run `dist:win` standalone; run root `pnpm build:electron`, which stages before invoking electron-builder. Electron/electron-builder come from the REPO ROOT devDependencies (single source of truth — this package deliberately has no devDependencies and is not a pnpm workspace member; root `pnpm run` puts the root .bin on PATH). Keep `build.electronVersion` in lockstep with the root `electron` version.",
+  "scripts": {
+    "start": "electron .",
+    "dist:win": "electron-builder --win nsis"
+  },
+  "build": {
+    "appId": "studio.opc.desktop",
+    "productName": "OPC Studio",
+    "electronVersion": "42.4.1",
+    "directories": {
+      "output": "release"
+    },
+    "files": [
+      "main.js",
+      "preload.js",
+      "build/icon.ico"
+    ],
+    "win": {
+      "target": "nsis",
+      "icon": "build/icon.ico"
+    },
+    "nsis": {
+      "artifactName": "OPC-Studio-Private-Alpha-${version}-x64.${ext}",
+      "oneClick": true,
+      "perMachine": false,
+      "allowElevation": false,
+      "packElevateHelper": false,
+      "installerIcon": "build/icon.ico",
+      "uninstallerIcon": "build/icon.ico",
+      "installerHeader": "build/installerHeader.bmp",
+      "installerSidebar": "build/installerSidebar.bmp",
+      "uninstallerSidebar": "build/uninstallerSidebar.bmp"
+    },
+    "extraResources": [
+      {
+        "from": "server-bundle",
+        "to": "server-bundle"
+      },
+      {
+        "from": "server-bundle/node_modules",
+        "to": "server-bundle/node_modules",
+        "filter": [
+          "**/*"
+        ]
+      },
+      {
+        "from": "../apps/web/dist",
+        "to": "web"
+      }
+    ]
+  }
+}

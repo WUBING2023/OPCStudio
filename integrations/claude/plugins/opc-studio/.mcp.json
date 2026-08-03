@@ -1,0 +1,9 @@
+{
+  "mcpServers": {
+    "opc-studio": {
+      "command": "opc-mcp-not-configured",
+      "args": [],
+      "env": {}
+    }
+  }
+}

@@ -1,0 +1,153 @@
+{
+  "schema_version": "0.3.0",
+  "bundle_type": "company",
+  "bundle_id": "golden-startup-v1",
+  "title": "金样本创业公司",
+  "description": "冻结的 canonical 当前版本 CompanyBundle 金样本。此文件是兼容宪法的物证:任何 schema 改动若让它无法被 parseCompanyBundle 接受,即视为违宪破坏。字段刻意铺满(metadata/company/org/agents/memory/privacy/compatibility 全填),以最大化捕获破坏面。",
+  "metadata": {
+    "version": "1.0.0",
+    "created_at": "2026-07-09T00:00:00.000Z",
+    "updated_at": "2026-07-09T00:00:00.000Z",
+    "license": "MIT",
+    "tags": ["golden", "fixture", "compat"],
+    "homepage": "https://example.com/golden",
+    "exported_from_app_version": "0.3.0"
+  },
+  "company": {
+    "company_id": "c-golden",
+    "name": "金样本创业公司",
+    "description": "用于冻结兼容承诺的示例公司",
+    "type": "company",
+    "default_language": "zh-CN"
+  },
+  "org": {
+    "agents": [
+      {
+        "id": "ceo-0",
+        "name": "创始人 CEO",
+        "role": "ceo",
+        "childrenIds": ["dev-0"],
+        "model": "deepseek-v4-pro",
+        "provider": "deepseek",
+        "framework": "hermes",
+        "companyId": "c-golden",
+        "uiPosition": { "x": 0, "y": 0 },
+        "visibilityPolicy": "default",
+        "status": "idle",
+        "tokenUsage": { "prompt": 0, "completion": 0, "total": 0 },
+        "editable": true,
+        "deletable": false,
+        "enabled": true
+      }
+    ],
+    "teams": [],
+    "edges": []
+  },
+  "agents": [
+    {
+      "id": "ceo-0",
+      "name": "创始人 CEO",
+      "role": "ceo",
+      "childrenIds": ["dev-0"],
+      "model": "deepseek-v4-pro",
+      "provider": "deepseek",
+      "framework": "hermes",
+      "companyId": "c-golden",
+      "uiPosition": { "x": 0, "y": 0 },
+      "visibilityPolicy": "default",
+      "status": "idle",
+      "tokenUsage": { "prompt": 0, "completion": 0, "total": 0 },
+      "costUsd": 0,
+      "editable": true,
+      "deletable": false,
+      "enabled": true,
+      "card": {
+        "summary": "统筹全局、拆解目标、分派任务的一号位。",
+        "skills": [
+          {
+            "id": "strategy",
+            "name": "战略拆解",
+            "description": "把模糊目标拆成可执行的部门任务",
+            "inputModes": ["text"],
+            "outputModes": ["text"]
+          }
+        ],
+        "produces": ["plan"],
+        "consumes": ["goal"],
+        "acceptsQuery": true,
+        "tools": []
+      },
+      "growth": {
+        "level": 1,
+        "xp": 0,
+        "successRate": 1,
+        "specialties": ["planning"],
+        "weaknesses": [],
+        "recentLessons": []
+      }
+    },
+    {
+      "id": "dev-0",
+      "name": "工程师",
+      "role": "dev",
+      "parentId": "ceo-0",
+      "childrenIds": [],
+      "model": "deepseek-v4-flash",
+      "provider": "deepseek",
+      "framework": "hermes",
+      "companyId": "c-golden",
+      "uiPosition": { "x": 200, "y": 120 },
+      "status": "idle",
+      "tokenUsage": { "prompt": 0, "completion": 0, "total": 0 },
+      "editable": true,
+      "deletable": true,
+      "enabled": true
+    }
+  ],
+  "memory": {
+    "records": [
+      {
+        "memory_id": "mem-golden-1",
+        "scope": "company",
+        "owner_type": "company",
+        "owner_id": "c-golden",
+        "content": "上线前务必先跑冒烟测试,再灰度放量。",
+        "source": {
+          "type": "run",
+          "run_id": "run-golden-1",
+          "task_id": "task-golden-1",
+          "agent_id": "ceo-0"
+        },
+        "level": "verified",
+        "score": 82,
+        "status": "active",
+        "tags": ["sop", "release"],
+        "metrics": {
+          "cited_count": 3,
+          "cited_success_count": 3,
+          "prevented_failure_count": 1,
+          "contradicted_count": 0,
+          "reviewer_upvote_count": 2
+        },
+        "created_at": "2026-07-01T00:00:00.000Z",
+        "updated_at": "2026-07-05T00:00:00.000Z",
+        "last_used_at": "2026-07-08T00:00:00.000Z"
+      }
+    ]
+  },
+  "privacy": {
+    "redacted": true,
+    "redacted_fields": [],
+    "required_secrets": [
+      {
+        "name": "DEEPSEEK_API_KEY",
+        "description": "调用 deepseek provider 所需的 API 密钥",
+        "required_for": "api"
+      }
+    ]
+  },
+  "compatibility": {
+    "min_app_version": "0.3.0",
+    "migration_notes": ["金样本:当前版本原生导出,无需迁移。"]
+  }
+}

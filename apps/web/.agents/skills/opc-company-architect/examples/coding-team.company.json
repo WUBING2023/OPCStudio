@@ -1,0 +1,12 @@
+{
+  "id": "my-coding",
+  "name": "My Coding Team",
+  "description": "Coder (claude-code/sonnet) + tester + independent codex code-reviewer, with a cross-verification edge.",
+  "ceoId": "mc-ceo",
+  "createdAt": "REPLACE_WITH_ISO_TIMESTAMP",
+  "workflow": {
+    "verificationEdges": [
+      { "producer": "dev", "verifier": "code_reviewer", "method": "code-review", "onReject": "redo", "maxRounds": 2 }
+    ]
+  }
+}

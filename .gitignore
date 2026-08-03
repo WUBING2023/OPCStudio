@@ -1,0 +1,86 @@
+# ===== 密钥 / 凭证(绝不提交、绝不打包上传) =====
+# 警告:.gitignore 的 # 只在「行首」才是注释。行尾注释(如 `foo  # 说明`)会成为模式的一部分,
+# 使该行失效——本文件曾因此差点提交 .opc/config.json(含明文 apiKeys)。注释一律独占一行。
+**/*.key
+keys/
+.env
+.env.*
+!.env.example
+*.pem
+**/auth.json
+**/.credentials.json
+# OPC 本地私有配置/凭证(含明文 apiKeys / 多账号 / provider 密钥)——任意层级
+**/.opc/config.json
+**/.opc/accounts.json
+**/.opc/providers.json
+
+# ===== 运行时数据 / 产出(非代码,不入库) =====
+**/.opc/runs/
+.opc-studio/
+*.log
+_pytest_result.txt
+
+# ===== 依赖 / 构建产物 =====
+node_modules/
+dist/
+release/
+*.egg-info/
+__pycache__/
+.DS_Store
+
+# ===== 保留(模板,可提交) =====
+!**/.opc/config.example.json
+
+# ===== 会话补充(2026-07-02 安全快照) =====
+# OAuth 凭证(auth.json 模式匹配不到这个名字)
+**/.opc/github_oauth.json
+# 运行时记忆/知识/报告/用量(数据非代码)
+**/.opc/memory/
+**/.opc/knowledge/
+**/.opc/reports/
+**/.opc/usage.json
+**/.opc/mcp_pins.json
+# 事故救援副本
+.opc/*.bak
+.opc/*backup*
+.opc/*.exp35
+.opc/*.pre-restore.json
+# server 目录下误生成的运行时
+apps/server/.opc/
+# worker 误建的 Python 环境残骸
+Python/
+Export
+Frozen
+_write_doc.py
+# ===== OPC Studio local runtime / generated workspace =====
+.opc/
+evidence/
+apps/cli/evidence/
+.tmp/
+*.tsbuildinfo
+.opc/*.sqlite*
+.opc/*.tmp-*
+.opc/*.pre-heartbeat
+.opc/*.md
+.opc/cli-accounts/
+.opc/dispatch-queue.json
+.opc/doctor-reports/
+.opc/electron-acceptance/
+.opc/governance-records.json
+.opc/install-transactions.json
+.opc/legacy-run-reclassify.v1.json
+.opc/memory-jobs.json
+.opc/meta.json
+.opc/model-catalog-state.json
+.opc/mup-battle/
+.opc/task-graphs.json
+.opc-benchmark/
+.opc-live-auditworkspace-*/
+.tmp-live-tests/
+.pnpm-store/
+apps/cli/.opc/
+electron-app/server-bundle/
+electron-app/package-lock.json
+spreadsheet_work/
+.opc-*.patch
+.opc-*.new.ts

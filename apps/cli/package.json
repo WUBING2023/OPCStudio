@@ -1,0 +1,44 @@
+{
+  "name": "@opc/cli",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "files": [
+    "dist"
+  ],
+  "bin": {
+    "opc": "./dist/index.js",
+    "opc-worker": "./dist/worker.js",
+    "opc-mcp": "./dist/mcp/index.js",
+    "opc-skill-export": "./dist/skills/index.js",
+    "opc-native-run": "./dist/native-adapters/runner.js"
+  },
+  "scripts": {
+    "start": "tsx src/index.ts",
+    "worker": "tsx src/worker.ts",
+    "mcp": "tsx src/mcp/index.ts",
+    "skills:export": "tsx src/skills/index.ts",
+    "build": "tsc -p tsconfig.build.json && node ../../scripts/rewrite-cli-runtime-imports.mjs && node dist/plugins/packageStandaloneMcp.js",
+    "mcp:smoke:dist": "tsx src/plugins/standaloneMcpSmoke.ts",
+    "mcp:smoke:live": "tsx src/plugins/liveMcpSmoke.ts",
+    "native:codex:smoke": "tsx src/native-adapters/codexAppServerSmoke.ts",
+    "native:codex:interrupt:smoke": "tsx src/native-adapters/codexInterruptLiveSmoke.ts",
+    "native:cross-path:smoke": "tsx src/native-adapters/crossPathLiveSmoke.ts",
+    "native:run": "tsx src/native-adapters/runner.ts",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@agentclientprotocol/sdk": "1.2.1",
+    "@anthropic-ai/claude-agent-sdk": "^0.3.220",
+    "@opc/server": "workspace:*",
+    "@opc/shared": "workspace:*",
+    "commander": "^12.1.0",
+    "open": "^10.1.0",
+    "zod": "^3.23.0"
+  },
+  "devDependencies": {
+    "@types/node": "24.13.2",
+    "tsx": "^4.19.0",
+    "typescript": "^5.7.0"
+  }
+}

@@ -1,0 +1,21 @@
+{
+  "$schema": "https://json.schemastore.org/claude-code-plugin-manifest.json",
+  "name": "opc-studio",
+  "displayName": "OPC Studio",
+  "version": "0.1.0",
+  "description": "Use OPC Studio companies for durable multi-agent runs, evidence review, and proposal-only company design.",
+  "author": {
+    "name": "OPC Studio"
+  },
+  "license": "MIT",
+  "keywords": [
+    "opc",
+    "multi-agent",
+    "mcp",
+    "evidence",
+    "workflow"
+  ],
+  "skills": "./skills/",
+  "mcpServers": "./.mcp.json",
+  "defaultEnabled": false
+}

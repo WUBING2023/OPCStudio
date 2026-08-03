@@ -1,0 +1,35 @@
+{
+  "schemaVersion": "1",
+  "note": "阶段2 · 价值评测确定性任务族。每个任务都带【机器可验断言】(node 行为断言 / 固定资料结构化抽取的内容标记),绝不复用 benchmark 里 expectedFile:null 的无断言演示 goal。goal 一律用英文(避免中文经 shell/编码链触发 checkTextIntegrity 的乱码误判;runner 通过 node fetch 读本文件直发,本文件须保持 UTF-8)。verify.kind=node-assert 用 runner 侧独立断言跑【被测团队产出的实现文件】(不信任团队自带测试);verify.kind=content-markers 断言产出文件必须命中固定资料里的每一条事实标记。",
+  "tasks": [
+    {
+      "id": "node-sum-even-squares",
+      "kind": "node-coding",
+      "goal": "Create a Node.js CommonJS module in a file named `sumEvenSquares.js`. It must export a single function `sumEvenSquares(nums)` that takes an array of integers and returns the sum of the squares of only the even numbers in the array. For example sumEvenSquares([1,2,3,4]) returns 20 (2*2 + 4*4), and sumEvenSquares([]) returns 0. If the argument is not an array the function must throw an Error. Export it with `module.exports = sumEvenSquares`. Also create a `sumEvenSquares.test.js` file that uses Node's built-in `assert` module to cover these cases and prints ALL_TESTS_PASSED on success.",
+      "expectedFile": "sumEvenSquares.js",
+      "verify": {
+        "kind": "node-assert",
+        "requirePath": "./sumEvenSquares.js",
+        "cases": [
+          { "desc": "mix of odd/even", "args": [[1, 2, 3, 4]], "equals": 20 },
+          { "desc": "empty array", "args": [[]], "equals": 0 },
+          { "desc": "all even", "args": [[2, 2, 2]], "equals": 12 },
+          { "desc": "all odd", "args": [[1, 3, 5]], "equals": 0 },
+          { "desc": "negatives count as even by parity", "args": [[-2, -3, 4]], "equals": 20 },
+          { "desc": "non-array throws", "args": ["not-an-array"], "throws": true },
+          { "desc": "null throws", "args": [null], "throws": true }
+        ]
+      }
+    },
+    {
+      "id": "research-structured-extract",
+      "kind": "research-fixed-material",
+      "goal": "Below is a fixed internal release note. Read ONLY this text (do not use the web) and produce a file named `release-summary.md` that contains, each on its own line, exactly: (1) the version number, (2) the release date, and (3) each of the three headline features by their short name. Do not invent any facts that are not in the text.\n\n=== SOURCE RELEASE NOTE (verbatim, do not modify) ===\nProduct: OPC Studio\nVersion: 4.2.0\nRelease Date: 2026-05-18\nHeadline features:\n- Layered Memory: five-tier company memory with failure-reflection recall.\n- Delivery Acceptance Gate: machine-verified evidence binding before a run is marked verified.\n- Community Bundle Export: reproducible, zero-cross-company-leak template export.\n=== END SOURCE ===",
+      "expectedFile": "release-summary.md",
+      "verify": {
+        "kind": "content-markers",
+        "allOf": ["4.2.0", "2026-05-18", "Layered Memory", "Delivery Acceptance Gate", "Community Bundle Export"]
+      }
+    }
+  ]
+}

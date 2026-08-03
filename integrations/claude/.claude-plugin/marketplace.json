@@ -1,0 +1,16 @@
+{
+  "name": "opc-studio-claude",
+  "description": "Local OPC Studio adapter marketplace for Claude Code.",
+  "owner": {
+    "name": "OPC Studio"
+  },
+  "plugins": [
+    {
+      "name": "opc-studio",
+      "source": "./plugins/opc-studio",
+      "description": "Use OPC Studio companies for durable multi-agent runs, evidence review, and proposal-only company design.",
+      "version": "0.1.0",
+      "category": "productivity"
+    }
+  ]
+}

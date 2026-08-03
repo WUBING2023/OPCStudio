@@ -1,0 +1,36 @@
+{
+  "name": "opc-studio",
+  "version": "0.1.0",
+  "description": "Use OPC Studio companies for durable multi-agent runs, evidence review, and proposal-only company design.",
+  "author": {
+    "name": "OPC Studio"
+  },
+  "license": "MIT",
+  "keywords": [
+    "opc",
+    "multi-agent",
+    "mcp",
+    "evidence",
+    "workflow"
+  ],
+  "skills": "./skills/",
+  "mcpServers": "./.mcp.json",
+  "interface": {
+    "displayName": "OPC Studio",
+    "shortDescription": "Run and verify durable OPC company work",
+    "longDescription": "Connect Codex to OPC Studio through high-level MCP tools for company discovery, durable runs, artifact review, and committed evidence.",
+    "developerName": "OPC Studio",
+    "category": "Productivity",
+    "capabilities": [
+      "Interactive",
+      "Read",
+      "Write"
+    ],
+    "defaultPrompt": [
+      "Run this task with my OPC Studio company",
+      "Review this OPC run and verify its evidence",
+      "Propose a right-sized OPC company design"
+    ],
+    "brandColor": "#1677FF"
+  }
+}

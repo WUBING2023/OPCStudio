@@ -1,0 +1,172 @@
+{
+  "schema_version": "0.3.0-legacy",
+  "bundle_type": "company",
+  "bundle_id": "legacy-tagged-drill-v1",
+  "title": "迁移演练·历史 0.3.0-legacy 标签 Bundle",
+  "description": "冻结的历史形态样本:早期 migrateLegacyTemplate 曾把迁移产物打成 0.3.0-legacy 标签,schema 严格化后该标签不再被 CompanyBundleSchema 直接接受,必须经迁移注册表(normalizeLegacyTaggedBundle)归一到 canonical 当前版本。此文件是《数据兼容宪法》迁移演练(bundleMigrationDrill.test.ts)的常驻输入,永不删除、永不改动。",
+  "metadata": {
+    "version": "1.0.0",
+    "created_at": "2026-06-01T00:00:00.000Z",
+    "updated_at": "2026-06-01T00:00:00.000Z",
+    "license": "MIT",
+    "tags": ["legacy-tagged", "fixture", "migration-drill"]
+  },
+  "company": {
+    "company_id": "c-drill",
+    "name": "drill-fixture",
+    "description": "历史标签 bundle 的来源公司"
+  },
+  "org": {
+    "agents": [
+      {
+        "id": "ceo-0",
+        "name": "统筹官",
+        "role": "ceo",
+        "childrenIds": ["dev-0", "qa-0"],
+        "model": "deepseek-v4-pro",
+        "provider": "deepseek",
+        "framework": "hermes",
+        "status": "idle",
+        "tokenUsage": { "prompt": 0, "completion": 0, "total": 0 },
+        "editable": true,
+        "deletable": false,
+        "enabled": true
+      },
+      {
+        "id": "dev-0",
+        "name": "订阅工程师",
+        "role": "dev",
+        "parentId": "ceo-0",
+        "childrenIds": [],
+        "model": "sonnet",
+        "provider": "anthropic",
+        "framework": "claude-code",
+        "status": "idle",
+        "tokenUsage": { "prompt": 0, "completion": 0, "total": 0 },
+        "editable": true,
+        "deletable": true,
+        "enabled": true
+      },
+      {
+        "id": "qa-0",
+        "name": "质检员",
+        "role": "qa",
+        "parentId": "ceo-0",
+        "childrenIds": [],
+        "model": "deepseek-v4-flash",
+        "provider": "deepseek",
+        "framework": "hermes",
+        "status": "idle",
+        "tokenUsage": { "prompt": 0, "completion": 0, "total": 0 },
+        "editable": true,
+        "deletable": true,
+        "enabled": true
+      }
+    ],
+    "teams": [],
+    "edges": []
+  },
+  "agents": [
+    {
+      "id": "ceo-0",
+      "name": "统筹官",
+      "role": "ceo",
+      "childrenIds": ["dev-0", "qa-0"],
+      "model": "deepseek-v4-pro",
+      "provider": "deepseek",
+      "framework": "hermes",
+      "status": "idle",
+      "tokenUsage": { "prompt": 0, "completion": 0, "total": 0 },
+      "editable": true,
+      "deletable": false,
+      "enabled": true
+    },
+    {
+      "id": "dev-0",
+      "name": "订阅工程师",
+      "role": "dev",
+      "parentId": "ceo-0",
+      "childrenIds": [],
+      "model": "sonnet",
+      "provider": "anthropic",
+      "framework": "claude-code",
+      "status": "idle",
+      "tokenUsage": { "prompt": 0, "completion": 0, "total": 0 },
+      "editable": true,
+      "deletable": true,
+      "enabled": true
+    },
+    {
+      "id": "qa-0",
+      "name": "质检员",
+      "role": "qa",
+      "parentId": "ceo-0",
+      "childrenIds": [],
+      "model": "deepseek-v4-flash",
+      "provider": "deepseek",
+      "framework": "hermes",
+      "status": "idle",
+      "tokenUsage": { "prompt": 0, "completion": 0, "total": 0 },
+      "editable": true,
+      "deletable": true,
+      "enabled": true
+    }
+  ],
+  "readme": "历史标签 bundle:结构字段齐备(workflow/a2aChannels/bundledSkills/mcpRequirements/memory),经注册表归一后应完整还原安装。",
+  "useCases": ["历史标签 bundle 迁移演练"],
+  "riskNotes": ["仅供回归测试"],
+  "toolRequirements": {
+    "requiredEngines": ["hermes", "claude-code"],
+    "requiredProviders": ["deepseek", "anthropic"],
+    "requiredMcpServers": [],
+    "requiredSkills": [],
+    "optionalTools": []
+  },
+  "recommendedConfig": {
+    "defaultModel": "deepseek-v4-pro",
+    "permissions": { "allowShell": false, "allowFileWrite": true, "allowWebAccess": false }
+  },
+  "workflow": {
+    "verificationEdges": [
+      { "producer": "dev", "verifier": "qa", "method": "code-review", "onReject": "redo", "maxRounds": 2 }
+    ]
+  },
+  "bundledSkills": [
+    {
+      "name": "release-checklist",
+      "description": "发布前检查单",
+      "content": "发布前先跑冒烟测试,再灰度放量。",
+      "roles": ["dev"]
+    }
+  ],
+  "mcpRequirements": [{ "name": "filesystem", "purpose": "读写工作区", "optional": true }],
+  "a2aChannels": [{ "from": "ceo", "to": "dev", "purpose": "任务下发" }],
+  "memory": {
+    "records": [
+      {
+        "memory_id": "mem-cs-drill-1",
+        "scope": "general",
+        "owner_type": "company",
+        "owner_id": "",
+        "content": "上线前务必先冒烟再放量。",
+        "source": { "type": "run", "run_id": "run-drill-1", "task_id": "" },
+        "level": "sop",
+        "score": 80,
+        "status": "active",
+        "tags": ["sop"],
+        "metrics": {
+          "cited_count": 1,
+          "cited_success_count": 1,
+          "prevented_failure_count": 0,
+          "contradicted_count": 0,
+          "reviewer_upvote_count": 0
+        },
+        "created_at": "2026-06-01T00:00:00.000Z",
+        "updated_at": "2026-06-01T00:00:00.000Z",
+        "last_used_at": "2026-06-01T00:00:00.000Z"
+      }
+    ]
+  },
+  "privacy": { "redacted": true, "redacted_fields": [], "required_secrets": [] },
+  "compatibility": { "migration_notes": ["自动迁移自 legacy template(无 schema_version)"] }
+}

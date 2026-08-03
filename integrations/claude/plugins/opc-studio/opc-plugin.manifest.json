@@ -1,0 +1,78 @@
+{
+  "schemaVersion": "1",
+  "ecosystemContractVersion": "1",
+  "name": "opc-studio",
+  "version": "0.1.0",
+  "platform": "claude",
+  "commandEntrypoint": {
+    "command": "opc-mcp-not-configured",
+    "args": []
+  },
+  "lifecycle": {
+    "workingDirectory": "marketplace-root",
+    "install": "scripts/install.ps1",
+    "uninstall": "scripts/uninstall.ps1",
+    "doctor": "scripts/doctor.ps1",
+    "smoke": "scripts/smoke.ps1"
+  },
+  "permissions": {
+    "direct": [],
+    "delegated": {
+      "command": "opc-mcp-not-configured",
+      "readTools": [
+        "list_companies",
+        "inspect_company",
+        "inspect_capabilities",
+        "plan_run",
+        "get_run_status",
+        "get_run_trace",
+        "list_artifacts",
+        "get_artifact",
+        "get_evidence",
+        "list_company_plans",
+        "get_company_plan",
+        "validate_company_bundle"
+      ],
+      "writeTools": [
+        "start_run",
+        "cancel_run",
+        "review_run",
+        "apply_company_plan",
+        "propose_memory"
+      ]
+    },
+    "writeRequirements": [
+      "authenticated OPC session",
+      "confirm=true",
+      "idempotencyKey",
+      "durable audit record"
+    ]
+  },
+  "dataPolicy": {
+    "includes": [
+      "plugin metadata",
+      "standard Skill instructions",
+      "opc-mcp process configuration"
+    ],
+    "excludes": [
+      "memory",
+      "credentials",
+      "keys",
+      "run-data",
+      "artifact-content",
+      "company-data",
+      "local-paths"
+    ]
+  },
+  "compatibility": {
+    "ecosystemContract": "1",
+    "opcCli": ">=0.1.0",
+    "codex": "plugin marketplace with stdio MCP support",
+    "claudeCode": ">=2.1.154"
+  },
+  "embeddedUi": {
+    "descriptor": "ui/embedded-ui.json",
+    "optional": true,
+    "headlessRequired": true
+  }
+}
