@@ -58,10 +58,20 @@ export function saveConfig(projectRoot: string, config: ProjectConfig) {
 
 // Agents
 // 战役B·Phase B2b:接后端开关。默认 json 逐字节不变;sqlite 时读走 agents 表(权威)、写【双写】。
-// fallback 仅 json 侧用;实测全部调用方都传 [],故 sqlite 空表 == [] == fallback,无 fallback 分歧。
+// SQLite uses fallback only for a store that has never initialized its canonical agents source.
 export function loadAgents(projectRoot: string, fallback: AgentNodeConfig[]): AgentNodeConfig[] {
   if (isSqliteBackend(projectRoot)) {
-    return readAllDocs(openBusinessDb(projectRoot), "agents") as AgentNodeConfig[];
+    const db = openBusinessDb(projectRoot);
+    const stored = readAllDocs(db, "agents") as AgentNodeConfig[];
+    if (stored.length > 0) return stored;
+
+    // An empty SQLite table is ambiguous: a brand-new installation needs the
+    // caller's defaults, while an explicitly saved empty organization must stay
+    // empty. Dual-write and migration both leave a canonical source marker, so
+    // only a store that has never had an agents source may use the fallback.
+    const canonical = path.join(projectRoot, OPC_DIR, "agents.json");
+    const migrated = db.prepare("SELECT 1 FROM _migrations WHERE source = ?").get("agents.json");
+    return fs.existsSync(canonical) || migrated ? [] : fallback;
   }
   return readJSON<AgentNodeConfig[]>(path.join(projectRoot, OPC_DIR, "agents.json"), fallback);
 }

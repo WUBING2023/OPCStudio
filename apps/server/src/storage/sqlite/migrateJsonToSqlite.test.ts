@@ -265,12 +265,14 @@ describe("migrateJsonToSqlite · 真实 .opc 副本金样本", () => {
   function copyCanonicalInputs(srcOpc: string, dstRoot: string): boolean {
     if (!fs.existsSync(srcOpc)) return false;
     const dstOpc = path.join(dstRoot, ".opc");
+    let copied = 0;
     const cp = (rel: string) => {
       const s = path.join(srcOpc, rel);
       if (!fs.existsSync(s)) return;
       const d = path.join(dstOpc, rel);
       fs.mkdirSync(path.dirname(d), { recursive: true });
       fs.copyFileSync(s, d);
+      copied++;
     };
     for (const f of ["companies.json", "agents.json", "governance-records.json", "task-graphs.json", "dispatch-queue.json", "memory-jobs.json", "goals.json", "missions.json", "install-transactions.json"]) cp(f);
     for (const f of ["registry.jsonl", "lessons.jsonl", "project.jsonl", "growth-snapshot.json"]) cp(path.join("memory", f));
@@ -286,7 +288,7 @@ describe("migrateJsonToSqlite · 真实 .opc 副本金样本", () => {
         if (e.isDirectory() && !e.name.startsWith("_")) cp(path.join("runs", e.name, "task.json"));
       }
     }
-    return true;
+    return copied > 0;
   }
 
   it("真实 .opc 副本迁移 → goldenCompare 0 差异 + 幂等重跑行数不变", () => {

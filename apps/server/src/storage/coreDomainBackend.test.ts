@@ -149,3 +149,17 @@ describe.each(BACKENDS)("§四 task.json 永远照写 [backend=%s]", (backend) =
     expect(run(() => loadRunTask(root, "run-e"))?.status).toBe("done");
   });
 });
+describe("agents first-run initialization [backend=sqlite]", () => {
+  it("uses caller defaults only when the SQLite store has never been initialized", () => {
+    const root = mkRoot();
+    const fallback = [A("default-ceo", "default", { role: "ceo" })];
+    expect(withBackend("sqlite", () => loadAgents(root, fallback))).toEqual(fallback);
+  });
+
+  it("does not resurrect defaults after an explicit empty organization was saved", () => {
+    const root = mkRoot();
+    const fallback = [A("default-ceo", "default", { role: "ceo" })];
+    withBackend("sqlite", () => saveAgents(root, []));
+    expect(withBackend("sqlite", () => loadAgents(root, fallback))).toEqual([]);
+  });
+});
