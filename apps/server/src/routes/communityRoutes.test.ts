@@ -1105,6 +1105,9 @@ describe("D6 · communityRoutes install/company — install transaction + rollba
   // ══ 收口② · 公司级四字段保守合并合同(与 companyRoutes /api/companies/import merge 同口径)══
   it("收口②·merge:visibilityPolicy 目标优先、defaultTasks goal 去重 union、toolRequirements 只声明 union、workflow 冲突 requires_review、agentMemories 只导新建员工", async () => {
     const TPL_ID = "t-merge-contract-fields";
+    fs.writeFileSync(path.join(root, ".opc", "accounts.json"), JSON.stringify([
+      { id: "codex-test", providerId: "openai", label: "Codex test", enabled: true, maxConcurrent: 1, frameworks: ["codex"] },
+    ]));
     const targetWorkflow = { verificationEdges: [{ producer: "dev", verifier: "ceo", method: "llm-review", onReject: "flag" }] };
     seedTargetCompany({
       visibilityPolicy: "isolated",
@@ -1185,6 +1188,10 @@ describe("D6 · communityRoutes install/company — install transaction + rollba
 
   it("收口②·rollback:公司级四字段整值恢复到合并前(目标原本没有的恢复为「无」)+ 只撤本 tx 导入的 memory record", async () => {
     const TPL_ID = "t-rollback-contract-fields";
+    fs.writeFileSync(path.join(root, ".opc", "accounts.json"), JSON.stringify([
+      { id: "codex-test", providerId: "openai", label: "Codex test", enabled: true, maxConcurrent: 1, frameworks: ["codex"] },
+      { id: "claude-test", providerId: "anthropic", label: "Claude test", enabled: true, maxConcurrent: 1, frameworks: ["claude-code"] },
+    ]));
     const NOW = "2026-07-08T00:00:00.000Z";
     const targetToolReq = { requiredEngines: ["claude-code"], requiredProviders: [], requiredMcpServers: [], requiredSkills: [], optionalTools: [] };
     // 目标:只有 manifestToolRequirements;visibilityPolicy/defaultTasks/workflow 均未设置(回滚要恢复为「无」)

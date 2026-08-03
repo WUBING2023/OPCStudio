@@ -1,0 +1,29 @@
+{
+  "schema_version": "0.3.0",
+  "bundle_type": "company",
+  "bundle_id": "golden-company-v030",
+  "title": "Golden Delivery Team",
+  "description": "Compatibility fixture for a minimal portable company.",
+  "agents": [
+    {
+      "id": "golden-dev",
+      "name": "Golden Developer",
+      "role": "dev",
+      "childrenIds": [],
+      "model": "portable-default",
+      "provider": "unbound",
+      "framework": "api",
+      "status": "idle",
+      "tokenUsage": { "prompt": 0, "completion": 0, "total": 0 },
+      "editable": true,
+      "deletable": true,
+      "enabled": true
+    }
+  ],
+  "privacy": {
+    "redacted": true,
+    "redacted_fields": [],
+    "required_secrets": []
+  },
+  "compatibility": { "migration_notes": [] }
+}

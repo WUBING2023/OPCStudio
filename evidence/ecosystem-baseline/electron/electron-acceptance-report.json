@@ -1,0 +1,46 @@
+{
+  "boot1": {
+    "title": "OPC Studio",
+    "rendered": true
+  },
+  "boot2": {
+    "rendered": true,
+    "resultsBodyLen": 11597
+  },
+  "navClicks": [
+    {
+      "nav": "工作台",
+      "clicked": true,
+      "bodyLen": 5644
+    },
+    {
+      "nav": "成果",
+      "clicked": true,
+      "bodyLen": 11601
+    },
+    {
+      "nav": "经验",
+      "clicked": true,
+      "bodyLen": 55765
+    },
+    {
+      "nav": "能力",
+      "clicked": true,
+      "bodyLen": 501
+    },
+    {
+      "nav": "公司",
+      "clicked": true,
+      "bodyLen": 1042
+    }
+  ],
+  "resultsView": {
+    "bodyLen": 11601
+  },
+  "summary": {
+    "boot1Rendered": true,
+    "navClicked": "5/5",
+    "boot2Rendered": true,
+    "pass": true
+  }
+}

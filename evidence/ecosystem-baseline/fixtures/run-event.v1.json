@@ -1,0 +1,11 @@
+{
+  "schemaVersion": "1",
+  "eventId": "evt-golden-run-started",
+  "runId": "run-golden-001",
+  "sequence": 0,
+  "timestamp": "2026-08-02T00:00:00.000Z",
+  "type": "run.started",
+  "actor": { "kind": "system", "id": "opc-server" },
+  "payload": { "projectId": "project-golden", "companyId": "golden-company-v030" },
+  "source": { "host": "other", "adapterId": "opc-native", "adapterVersion": "1" }
+}

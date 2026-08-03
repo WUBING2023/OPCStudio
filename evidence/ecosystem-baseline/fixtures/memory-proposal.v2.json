@@ -1,0 +1,34 @@
+{
+  "proposalId": "memprop-golden-001",
+  "objectType": "success_experience",
+  "scope": "company",
+  "scopeId": "golden-company-v030",
+  "title": "Bind tests to delivered source hashes",
+  "content": "Independent tests must resolve at least one producer-owned source file whose hash is present in the frozen artifact manifest.",
+  "summary": "Require runtime test resolution to intersect the frozen producer artifact manifest.",
+  "sourceType": "run",
+  "sourceRunId": "run-golden-001",
+  "status": "proposed",
+  "scores": {
+    "novelty": 0.9,
+    "reusability": 0.95,
+    "specificity": 0.9,
+    "evidenceStrength": 1,
+    "freshnessRisk": 0.1,
+    "sensitivityRisk": 0,
+    "contradictionRisk": 0.05
+  },
+  "reasons": ["aggregate_score=0.906"],
+  "relatedMemoryIds": [],
+  "createdAt": "2026-08-02T00:00:00.000Z",
+  "reviewedAt": "2026-08-02T00:00:00.000Z",
+  "inputHash": "sha256:8dc3be695815968603283876e3298bca91c7e7c3525d005241290d1b9841ec8e",
+  "reviewer": {
+    "kind": "deterministic+policy",
+    "version": "memory-reviewer-v2",
+    "evidenceIds": ["run-golden-001"],
+    "confidence": 0.906,
+    "counterexamples": ["A test that only executes code defined inside the test file does not establish producer correctness."],
+    "rollbackVersion": "sha256:8dc3be695815968603283876e3298bca91c7e7c3525d005241290d1b9841ec8e"
+  }
+}

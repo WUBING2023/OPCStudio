@@ -1,0 +1,27 @@
+{
+  "schemaVersion": 1,
+  "capturedAt": "2026-08-02T00:00:00.000Z",
+  "viewport": { "width": 1280, "height": 720 },
+  "files": [
+    { "path": "electron/electron-acceptance-report.json", "sha256": "ae302b159607af75efc450125b0cd5a35e434986ab718d0b5fdbceca881557fb", "kind": "electron-acceptance", "source": "evidence/mup-release-gates" },
+    { "path": "electron/electron-pw-smoke-result.json", "sha256": "7e42150739782ea8234046a770998db0f11c052810efeb1c9043ee4183dd7883", "kind": "electron-smoke", "source": "evidence/mup-release-gates" },
+    { "path": "external-runs/codex-acp-run1/clamp.js", "sha256": "1ea335fd9b2fe7d8861d48bd3f9b11c29aca8b3bb588d7123f2efd7bbe0e6abb", "kind": "artifact", "source": "preserved Codex ACP run" },
+    { "path": "external-runs/codex-acp-run1/clamp.test.js", "sha256": "24e18715d6a86b08970d705b1dae588c6124713c75dcd96aa5cfdfea0227372f", "kind": "artifact", "source": "preserved Codex ACP run" },
+    { "path": "external-runs/codex-acp-run1/diagnostics.json", "sha256": "ea35f54811673e12d56a18761b02ba5b912c4f254438a5fb0d9d6fa47a5b59ce", "kind": "diagnostics", "source": "preserved Codex ACP run" },
+    { "path": "external-runs/codex-acp-run1/events.jsonl", "sha256": "a55c316950bd47d4fe436493d8dace09be36276e95cbd559a2efbf3579218c7b", "kind": "trace", "source": "preserved Codex ACP run" },
+    { "path": "external-runs/codex-acp-run1/result.json", "sha256": "242af0759d51103298393e97c30e601c8a29867a0c575b36faf50f1fd23625e7", "kind": "result", "source": "preserved Codex ACP run" },
+    { "path": "external-runs/codex-acp-run1/task.json", "sha256": "892eae9b99d09e2e429675253a515c25aec8ebec026d1607ef389c63fda1faff", "kind": "task", "source": "preserved Codex ACP run" },
+    { "path": "external-runs/codex-acp-run1/test-output.txt", "sha256": "18aa67d950a03328f37316439ab440e2a807b7afc0112a48a3c04d8ca73b6cef", "kind": "test-evidence", "source": "preserved Codex ACP run" },
+    { "path": "external-runs/codex-acp-run1/worker.config.json", "sha256": "b5dc72b26708d0d2c9acbced4df30c956a2209a89915b91f65296710b1057579", "kind": "worker-config", "source": "preserved Codex ACP run" },
+    { "path": "fixtures/company-bundle.v0.3.0.json", "sha256": "b72065947c9c6fd2107a14fce097d32974f6b141b26896d636b8d07eb4593f3a", "kind": "golden-fixture" },
+    { "path": "fixtures/memory-proposal.v2.json", "sha256": "096af2e70a1a26b07528d535a1880be8c716c229db57996d40284de09097b705", "kind": "golden-fixture" },
+    { "path": "fixtures/run-event.v1.json", "sha256": "0ff7dd45b9f86f4a6ad312e006dfc25926748a0a2035a274ddfb1640ec89e450", "kind": "golden-fixture" },
+    { "path": "visual/company-empty-state-1280x720.png", "sha256": "2e7df900cf659e67059646e176a717a0a32925dff3ddb87abafa7ca278c67c40", "kind": "web-visual-baseline" },
+    { "path": "visual/electron-home.png", "sha256": "e1cf6f03cea446af3a6a63fd75a06f7c3625b9a7f635be1f5a1e2771ad7477ca", "kind": "electron-visual-baseline" },
+    { "path": "visual/electron-results-view.png", "sha256": "2810edc782dd629d31a13545b64573ac5895c6d46f0c246c363016ce01e2119e", "kind": "electron-visual-baseline" },
+    { "path": "visual/mcp-1280x720.png", "sha256": "5eb5c51dda9682967103e5ad3f1fb37633254eb6816ed1392351d463ab12fc3c", "kind": "web-visual-baseline" },
+    { "path": "visual/projects-runs-1280x720.png", "sha256": "3fb6f231ab86aae52b892a2144823d0995d0ff5da7f3ad70566a5232c17611e1", "kind": "web-visual-baseline" },
+    { "path": "visual/skill-1280x720.png", "sha256": "b807df870db2efb9cabe189f361b10d53bc1a7fa31d5bc3f4018f4ab9369d0e3", "kind": "web-visual-baseline" },
+    { "path": "visual/workbench-1280x720.png", "sha256": "de1e777a0683a5d28ca9553d59f22e2e10c1ff6c55d277a59a0574f628e0f789", "kind": "web-visual-baseline" }
+  ]
+}

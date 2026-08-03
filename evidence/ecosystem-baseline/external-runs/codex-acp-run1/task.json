@@ -1,0 +1,5 @@
+{
+  "taskId": "codex-run1-clamp",
+  "goal": "实现 clamp.js：把数字限制在 [min, max] 范围内，如 clamp(5, 0, 10) = 5，clamp(-1, 0, 10) = 0，clamp(15, 0, 10) = 10。然后写 clamp.test.js，用 node clamp.test.js 能跑通。只写这两个文件。",
+  "agentId": "codex-run1"
+}

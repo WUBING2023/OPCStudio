@@ -128,8 +128,8 @@ export async function executeCodexNativeRun(
   let owned = false;
   let transport = dependencies.transport;
   try {
-    const hostVersion = dependencies.hostVersion ?? await readInstalledCodexVersion(command);
     if (!transport) {
+      const hostVersion = dependencies.hostVersion ?? await readInstalledCodexVersion(command);
       transport = CodexAppServerTransport.start({
         command,
         hostVersion,
