@@ -3,118 +3,158 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content="OPC Studio 是一个本地优先、可验证、可复用的多智能体工作系统。" />
-    <meta name="theme-color" content="#0b0d0f" />
+    <meta name="description" content="OPC Studio 是一个本地优先、可验证、可复用的 AI 团队工作系统。" />
+    <meta name="theme-color" content="#f7f8f4" />
     <meta property="og:title" content="OPC Studio" />
     <meta property="og:description" content="组织 AI 团队，执行真实任务，保留证据与经验。" />
-    <meta property="og:image" content="/assets/opc-studio-workbench.png" />
+    <meta property="og:image" content="/assets/opc-studio-home.png" />
     <title>OPC Studio | 可验证的 AI 团队工作系统</title>
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
     <link rel="stylesheet" href="/styles.css" />
   </head>
   <body>
-    <header class="topbar">
+    <header class="topbar" data-header>
       <a class="brand" href="#top" aria-label="OPC Studio 首页">
-        <span class="brand-mark" aria-hidden="true">OPC</span>
+        <span class="brand-mark" aria-hidden="true"><i></i><i></i><i></i></span>
         <span>OPC Studio</span>
       </a>
       <nav aria-label="主导航">
-        <a href="#capabilities">能力</a>
-        <a href="#release">版本</a>
-        <a href="https://github.com/WUBING2023/OPCStudio" target="_blank" rel="noreferrer">GitHub</a>
+        <a href="#system">工作系统</a>
+        <a href="#product">产品界面</a>
+        <a href="#release">下载</a>
       </nav>
+      <a class="github-link" href="https://github.com/WUBING2023/OPCStudio" target="_blank" rel="noreferrer">
+        GitHub <span aria-hidden="true">↗</span>
+      </a>
     </header>
 
     <main id="top">
       <section class="hero" aria-labelledby="hero-title">
-        <div class="hero-backdrop" aria-hidden="true"></div>
+        <div class="hero-image" aria-hidden="true"></div>
+        <div class="hero-wash" aria-hidden="true"></div>
         <div class="hero-content">
-          <p class="release-label">Windows Private Alpha · v0.1.0</p>
+          <p class="status"><span aria-hidden="true"></span>Windows Private Alpha · v0.1.0</p>
           <h1 id="hero-title">OPC Studio</h1>
-          <p class="hero-copy">让多个 AI Agent 在清晰的责任、权限、任务图和验证制度下协作，并把交付、证据与经验留在本地。</p>
+          <p class="hero-tagline">可验证的 AI 团队工作系统</p>
+          <p class="hero-copy">
+            把 Codex、Claude Code 与 API 模型组织成可长期工作的公司。<br />
+            任务会留下产物、证据、状态与可审核的经验。
+          </p>
           <div class="hero-actions">
             <a class="button button-primary" href="https://github.com/WUBING2023/OPCStudio/releases/download/v0.1.0/OPC-Studio-Private-Alpha-0.1.0-x64.exe" data-download>
-              下载 Windows 版
-              <span>约 127 MiB</span>
+              <span aria-hidden="true">↓</span> 下载 Windows 版
             </a>
-            <a class="button button-secondary" href="https://github.com/WUBING2023/OPCStudio/releases/tag/v0.1.0" target="_blank" rel="noreferrer">查看发布说明</a>
+            <a class="button button-secondary" href="https://github.com/WUBING2023/OPCStudio" target="_blank" rel="noreferrer">
+              查看开源代码 <span aria-hidden="true">↗</span>
+            </a>
           </div>
-          <p class="hero-note">Windows 10/11 x64 · 安装包不包含 API Key 或订阅凭据</p>
+          <p class="hero-note">Windows 10/11 x64 · 约 127 MiB · Apache-2.0</p>
         </div>
-        <a class="hero-next" href="#capabilities" aria-label="查看核心能力">继续了解</a>
+        <a class="hero-next" href="#system" aria-label="继续了解 OPC Studio">
+          <span>为什么是 OPC Studio</span><i aria-hidden="true"></i>
+        </a>
       </section>
 
-      <section class="capabilities" id="capabilities" aria-labelledby="capabilities-title">
-        <div class="section-heading">
-          <p class="eyebrow">从组织到交付</p>
-          <h2 id="capabilities-title">不是更热闹的 Agent 聊天，而是可追溯的工作过程</h2>
+      <section class="proof-band" aria-label="产品原则">
+        <div><strong>真实执行</strong><span>写入真实工作目录</span></div>
+        <div><strong>诚实终态</strong><span>失败不会包装成成功</span></div>
+        <div><strong>证据交付</strong><span>产物、测试与 hash 可复算</span></div>
+        <div><strong>组织复用</strong><span>公司与经验可迁移升级</span></div>
+      </section>
+
+      <section class="system" id="system" aria-labelledby="system-title">
+        <div class="section-intro">
+          <p class="eyebrow">THE WORK SYSTEM</p>
+          <h2 id="system-title">不只是让 Agent 聊天。<br />而是让组织完成工作。</h2>
+          <p>公司决定责任、权限和能力；任务决定这一次谁参与；证据决定能不能报告成功。</p>
         </div>
-        <div class="capability-grid">
+        <div class="system-grid">
           <article>
-            <span class="index">01</span>
-            <h3>按任务动态组队</h3>
-            <p>公司定义责任、权限和能力；每个任务再形成最小执行团队，减少无效转述与过度部署。</p>
+            <span class="number">01</span>
+            <div class="mini-diagram org-diagram" aria-hidden="true"><i></i><i></i><i></i><i></i></div>
+            <h3>长期组织</h3>
+            <p>岗位、权限、Skill、MCP、验证边和记忆形成稳定公司能力，而不是一次性 Prompt。</p>
           </article>
           <article>
-            <span class="index">02</span>
-            <h3>跨模型与订阅协作</h3>
-            <p>统一组织 API Provider、Codex CLI、Claude Code 与受支持的 ACP/原生桥接路径。</p>
+            <span class="number">02</span>
+            <div class="mini-diagram graph-diagram" aria-hidden="true"><i></i><i></i><i></i><i></i></div>
+            <h3>动态任务图</h3>
+            <p>根据风险和任务规模组建最小团队，减少无效管理 Agent、转述损失与过度部署。</p>
           </article>
           <article>
-            <span class="index">03</span>
-            <h3>证据约束交付</h3>
-            <p>保存任务图、文件 hash、测试证据、A2A 交接和终态；失败不会包装成成功。</p>
-          </article>
-          <article>
-            <span class="index">04</span>
-            <h3>经验可治理复用</h3>
-            <p>记忆按用户、公司、项目、团队和员工分层，经审核后进入后续任务，并可撤销与追溯。</p>
+            <span class="number">03</span>
+            <div class="mini-diagram evidence-diagram" aria-hidden="true"><i></i><i></i><i></i></div>
+            <h3>可验证交付</h3>
+            <p>产物清单、文件 hash、测试证据、A2A 交接与最终报告共享同一份事实。</p>
           </article>
         </div>
       </section>
 
-      <section class="product-view" aria-labelledby="product-title">
-        <div class="product-copy">
-          <p class="eyebrow">真实产品界面</p>
-          <h2 id="product-title">在一个工作台里看见组织、执行和证据</h2>
-          <p>公司结构负责长期治理，项目和任务记录真实执行。你可以检查参与者、运行状态、Token、产物与验证结论。</p>
+      <section class="product" id="product" aria-labelledby="product-title">
+        <div class="product-heading">
+          <div>
+            <p class="eyebrow">REAL PRODUCT</p>
+            <h2 id="product-title">看见组织如何行动。</h2>
+          </div>
+          <p>从公司架构到项目、协作消息、运行 Trace 和最终产物，每一步都能回到真实记录。</p>
         </div>
-        <figure>
-          <img src="/assets/opc-studio-workbench.png" width="1280" height="720" alt="OPC Studio 工作台界面，展示公司员工、对话与执行状态" loading="lazy" />
-          <figcaption>OPC Studio 工作台</figcaption>
+        <figure class="product-window">
+          <div class="window-bar" aria-hidden="true"><span></span><span></span><span></span><b>OPC Studio · 公司工作台</b></div>
+          <img src="/assets/opc-studio-home.png" width="2429" height="1248" alt="OPC Studio 公司工作台，展示组织架构、员工状态与协作入口" />
+          <figcaption>真实产品界面 · 公司架构与日常工作入口</figcaption>
         </figure>
+        <ol class="workflow" aria-label="OPC Studio 工作流程">
+          <li><span>01</span>选择公司</li>
+          <li><span>02</span>一句话派单</li>
+          <li><span>03</span>动态组队</li>
+          <li><span>04</span>独立验证</li>
+          <li><span>05</span>交付与复盘</li>
+        </ol>
+      </section>
+
+      <section class="providers" aria-labelledby="providers-title">
+        <p class="eyebrow">BRING YOUR AGENTS</p>
+        <h2 id="providers-title">使用你已经拥有的模型与订阅。</h2>
+        <div class="provider-row" aria-label="支持的执行路径">
+          <span>Codex CLI</span><span>Claude Code</span><span>DeepSeek</span><span>OpenAI API</span><span>ACP</span><span>MCP</span>
+        </div>
+        <p class="providers-note">不同执行器统一进入同一套任务合同、工作目录、Trace 和交付验收。</p>
       </section>
 
       <section class="release" id="release" aria-labelledby="release-title">
-        <div class="release-summary">
-          <p class="eyebrow">当前版本</p>
-          <h2 id="release-title">v0.1.0 Windows Private Alpha</h2>
-          <p>适合在非敏感测试项目中体验完整英雄回路。当前只对 Windows x64 安装与启动链路做过发布验收。</p>
-          <a class="button button-primary" href="https://github.com/WUBING2023/OPCStudio/releases/download/v0.1.0/OPC-Studio-Private-Alpha-0.1.0-x64.exe" data-download>下载安装包</a>
+        <div class="release-main">
+          <p class="eyebrow">LATEST RELEASE</p>
+          <h2 id="release-title">从一家 AI 公司开始。</h2>
+          <p>当前版本面向愿意测试本地 Agent 工作流的 Windows 用户。建议先在非敏感项目中体验。</p>
+          <div class="release-actions">
+            <a class="button button-primary" href="https://github.com/WUBING2023/OPCStudio/releases/download/v0.1.0/OPC-Studio-Private-Alpha-0.1.0-x64.exe" data-download>
+              <span aria-hidden="true">↓</span> 下载 v0.1.0
+            </a>
+            <a class="text-link" href="https://github.com/WUBING2023/OPCStudio/releases/tag/v0.1.0" target="_blank" rel="noreferrer">发布说明 ↗</a>
+          </div>
         </div>
-        <div class="release-facts" aria-label="版本信息">
-          <div><span>平台</span><strong>Windows 10/11 x64</strong></div>
-          <div><span>安装包</span><strong>约 127 MiB</strong></div>
-          <div><span>SHA-256</span><a href="https://github.com/WUBING2023/OPCStudio/releases/download/v0.1.0/OPC-Studio-Private-Alpha-0.1.0-x64.exe.sha256">下载校验文件</a></div>
-          <div><span>源码</span><a href="https://github.com/WUBING2023/OPCStudio/tree/v0.1.0" target="_blank" rel="noreferrer">GitHub v0.1.0</a></div>
-        </div>
+        <dl class="release-facts">
+          <div><dt>平台</dt><dd>Windows 10/11 x64</dd></div>
+          <div><dt>安装包</dt><dd>约 127 MiB</dd></div>
+          <div><dt>安装后</dt><dd>约 472 MiB</dd></div>
+          <div><dt>凭据</dt><dd>不包含 API Key 或订阅凭据</dd></div>
+          <div><dt>校验</dt><dd><a href="https://github.com/WUBING2023/OPCStudio/releases/download/v0.1.0/OPC-Studio-Private-Alpha-0.1.0-x64.exe.sha256">SHA-256 文件 ↗</a></dd></div>
+        </dl>
       </section>
 
-      <section class="limits" aria-labelledby="limits-title">
-        <h2 id="limits-title">Private Alpha 边界</h2>
-        <ul>
-          <li>第三方 Skill、MCP 与 CLI 具有本机执行能力，请先检查权限和来源。</li>
-          <li>多 Agent 不保证优于单个强模型；OPC Studio 会渐进组队，并诚实保留失败结果。</li>
-          <li>订阅制模型只统计 Token，无法准确折算单次货币成本。</li>
-          <li>macOS 安装包、完整容器沙箱与公开模板签名仍在后续路线中。</li>
-        </ul>
+      <section class="boundary" aria-labelledby="boundary-title">
+        <h2 id="boundary-title">Private Alpha，边界同样清楚。</h2>
+        <p>第三方 Skill、MCP 和 CLI 可能拥有本机执行权限。公开模板信任、完整沙箱、macOS 安装包与更大规模价值评测仍在后续路线中。</p>
+        <a href="https://github.com/WUBING2023/OPCStudio/blob/main/docs/security-boundary.md" target="_blank" rel="noreferrer">阅读安全边界 ↗</a>
       </section>
     </main>
 
     <footer>
-      <span>OPC Studio · Apache-2.0</span>
-      <div><a href="https://github.com/WUBING2023/OPCStudio">源码</a><a href="https://github.com/WUBING2023/OPCStudio/issues">问题反馈</a></div>
+      <a class="brand footer-brand" href="#top"><span class="brand-mark" aria-hidden="true"><i></i><i></i><i></i></span><span>OPC Studio</span></a>
+      <p>让 AI 组织可靠地完成工作。</p>
+      <div><a href="https://github.com/WUBING2023/OPCStudio">GitHub</a><a href="https://github.com/WUBING2023/OPCStudio/issues">问题反馈</a><span>Apache-2.0</span></div>
     </footer>
+
     <div class="toast" role="status" aria-live="polite" hidden></div>
     <script src="/app.js"></script>
   </body>
