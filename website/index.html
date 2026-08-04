@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description" content="OPC Studio is a local-first, verifiable, reusable work system for AI teams." />
-    <meta name="theme-color" content="#f7f8f4" />
+    <meta name="theme-color" content="#0d0d0d" />
     <meta property="og:title" content="OPC Studio" />
     <meta property="og:description" content="Organize AI teams, execute real work, and preserve evidence and experience." />
     <meta property="og:image" content="/assets/opc-studio-home.png" />
@@ -19,6 +19,7 @@
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
     <link rel="stylesheet" href="/styles.css" />
     <link rel="stylesheet" href="/i18n.css" />
+    <link rel="stylesheet" href="/opc-theme.css" />
   </head>
   <body>
     <header class="topbar" data-header>
@@ -122,11 +123,16 @@
           </div>
           <p>从公司架构到项目、协作消息、运行 Trace 和最终产物，每一步都能回到真实记录。</p>
         </div>
-        <figure class="product-window">
-          <div class="window-bar" aria-hidden="true"><span></span><span></span><span></span><b>OPC Studio · 公司工作台</b></div>
-          <img src="/assets/opc-studio-home.png" width="2429" height="1248" alt="OPC Studio 公司工作台，展示组织架构、员工状态与协作入口" />
-          <figcaption>真实产品界面 · 公司架构与日常工作入口</figcaption>
-        </figure>
+        <div class="product-stage">
+          <figure class="product-window">
+            <div class="window-bar" aria-hidden="true"><span></span><span></span><span></span><b>OPC Studio · 公司工作台</b></div>
+            <img src="/assets/opc-studio-home.png" width="2429" height="1248" alt="OPC Studio 公司工作台，展示组织架构、员工状态与协作入口" />
+            <figcaption>真实产品界面 · 公司架构与日常工作入口</figcaption>
+          </figure>
+          <div class="product-detail-frame" aria-hidden="true">
+            <img src="/assets/opc-studio-workbench.png" width="1280" height="720" alt="" loading="lazy" />
+          </div>
+        </div>
         <ol class="workflow" aria-label="OPC Studio 工作流程">
           <li><span>01</span>选择公司</li>
           <li><span>02</span>一句话派单</li>
