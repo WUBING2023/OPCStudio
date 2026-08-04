@@ -21,10 +21,11 @@
       <nav aria-label="主导航">
         <a href="#system">工作系统</a>
         <a href="#product">产品界面</a>
+        <a href="#community">社区</a>
         <a href="#release">下载</a>
       </nav>
       <a class="github-link" href="https://github.com/WUBING2023/OPCStudio" target="_blank" rel="noreferrer">
-        GitHub <span aria-hidden="true">↗</span>
+        GitHub <span class="star-badge"><span aria-hidden="true">★</span><b data-star-count>0</b></span>
       </a>
     </header>
 
@@ -121,6 +122,43 @@
         <p class="providers-note">不同执行器统一进入同一套任务合同、工作目录、Trace 和交付验收。</p>
       </section>
 
+      <section class="community" id="community" aria-labelledby="community-title">
+        <div class="community-heading">
+          <div>
+            <p class="eyebrow">OPEN SOURCE SIGNAL</p>
+            <h2 id="community-title">社区从真实信号开始。</h2>
+          </div>
+          <p>地图只聚合 GitHub 用户主动公开的位置。不会采集访问者 IP，不展示用户名，也不会用示例数据冒充真实用户。</p>
+        </div>
+        <div class="community-layout">
+          <div class="community-map-wrap">
+            <div class="map-grid" aria-hidden="true"></div>
+            <div id="community-map" role="img" aria-label="OPC Studio GitHub Stargazer 国家和地区分布图"></div>
+            <div class="map-empty" data-map-empty>
+              <strong>等待第一束社区信号</strong>
+              <span>公开位置的 Stargazer 出现后，地图会自动点亮。</span>
+            </div>
+            <span class="map-label">OPC / COMMUNITY FIELD</span>
+          </div>
+          <aside class="community-panel" aria-label="社区统计">
+            <div class="community-primary-stat">
+              <span>GitHub Stars</span>
+              <strong><span aria-hidden="true">★</span> <b data-star-count>0</b></strong>
+              <a href="https://github.com/WUBING2023/OPCStudio" target="_blank" rel="noreferrer">在 GitHub 上支持项目 ↗</a>
+            </div>
+            <dl class="community-stats">
+              <div><dt>公开位置可识别</dt><dd data-located-count>0</dd></div>
+              <div><dt>国家与地区</dt><dd data-country-count>0</dd></div>
+              <div><dt>数据更新时间</dt><dd data-community-updated>待首次聚合</dd></div>
+            </dl>
+            <div class="community-method">
+              <span>数据口径</span>
+              <p>Star 数来自 GitHub 仓库 API；地图来自 Stargazer 自填的公开位置，按国家/地区聚合。安装量和活跃用户将来必须通过明确选择加入的匿名遥测单独统计。</p>
+            </div>
+          </aside>
+        </div>
+      </section>
+
       <section class="release" id="release" aria-labelledby="release-title">
         <div class="release-main">
           <p class="eyebrow">LATEST RELEASE</p>
@@ -156,6 +194,9 @@
     </footer>
 
     <div class="toast" role="status" aria-live="polite" hidden></div>
+    <script src="/vendor/echarts.min.js"></script>
+    <script src="/vendor/worldgeo.js"></script>
+    <script src="/community-data.js"></script>
     <script src="/app.js"></script>
   </body>
 </html>
