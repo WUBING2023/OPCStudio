@@ -23,7 +23,7 @@ function syncHeader() {
 }
 
 function formatCount(value) {
-  return new Intl.NumberFormat("en-US").format(Number(value) || 0);
+  return new Intl.NumberFormat(window.OPCI18N?.languages?.[window.OPCI18N.locale]?.html || "en").format(Number(value) || 0);
 }
 
 function setText(selector, value) {
@@ -39,8 +39,8 @@ function syncCommunityStats(stars = community.stars) {
   setText(
     "[data-community-updated]",
     community.generated
-      ? new Intl.DateTimeFormat("zh-CN", { dateStyle: "medium" }).format(new Date(community.generated))
-      : "待首次聚合",
+      ? (window.OPCI18N?.formatDate?.(new Date(community.generated)) || new Intl.DateTimeFormat("en", { dateStyle: "medium" }).format(new Date(community.generated)))
+      : (window.OPCI18N?.message?.("awaiting") || "Awaiting first aggregation"),
   );
 }
 
@@ -81,7 +81,11 @@ function renderCommunityMap() {
       borderWidth: 0,
       backgroundColor: "#f7f8f4",
       textStyle: { color: "#171817", fontSize: 12 },
-      formatter: ({ data }) => data ? `${data.name}<br><strong>${formatCount(data.count)} Stargazer${data.count === 1 ? "" : "s"}</strong>` : "",
+      formatter: ({ data }) => {
+        if (!data) return "";
+        const unit = window.OPCI18N?.message?.(data.count === 1 ? "mapUnit" : "mapUnits") || (data.count === 1 ? "Stargazer" : "Stargazers");
+        return `${data.name}<br><strong>${formatCount(data.count)}${unit.startsWith(" ") ? "" : " "}${unit}</strong>`;
+      },
     },
     geo: {
       map: "opc-world",
@@ -115,10 +119,11 @@ function renderCommunityMap() {
 }
 
 document.querySelectorAll("[data-download]").forEach((link) => {
-  link.addEventListener("click", () => showToast("正在从 GitHub Releases 下载 Windows 安装包"));
+  link.addEventListener("click", () => showToast(window.OPCI18N?.message?.("downloadToast") || "Downloading the Windows installer from GitHub Releases"));
 });
 
 window.addEventListener("scroll", syncHeader, { passive: true });
+window.addEventListener("opc:languagechange", () => syncCommunityStats());
 syncHeader();
 syncCommunityStats();
 renderCommunityMap();

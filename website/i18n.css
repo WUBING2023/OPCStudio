@@ -1,0 +1,85 @@
+.topbar-actions {
+  justify-self: end;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.language-menu { position: relative; }
+
+.language-trigger {
+  min-width: 58px;
+  height: 36px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+  padding: 0 10px;
+  border: 1px solid #bfc4bc;
+  border-radius: 7px;
+  background: rgba(247, 248, 244, .9);
+  color: var(--ink);
+  font: 750 12px/1 Inter, "Segoe UI", sans-serif;
+  letter-spacing: 0;
+  cursor: pointer;
+}
+
+.language-trigger:hover,
+.language-trigger:focus-visible,
+.language-trigger[aria-expanded="true"] {
+  border-color: var(--ink);
+  background: #fff;
+  outline: none;
+}
+
+.language-options {
+  position: absolute;
+  top: calc(100% + 9px);
+  right: 0;
+  width: 190px;
+  padding: 6px;
+  border: 1px solid #bfc4bc;
+  border-radius: 8px;
+  background: #fff;
+  box-shadow: 0 18px 45px rgba(23, 24, 23, .16);
+}
+
+.language-options[hidden] { display: none; }
+
+.language-options button {
+  width: 100%;
+  min-height: 38px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 10px;
+  border: 0;
+  border-radius: 5px;
+  background: transparent;
+  color: var(--ink);
+  font: 650 13px/1.2 Inter, "Segoe UI", "PingFang SC", sans-serif;
+  letter-spacing: 0;
+  cursor: pointer;
+}
+
+.language-options button span {
+  color: #777d76;
+  font: 750 10px/1 ui-monospace, SFMono-Regular, Consolas, monospace;
+}
+
+.language-options button:hover,
+.language-options button:focus-visible { background: #eef0ea; outline: none; }
+.language-options button[aria-checked="true"] { background: var(--lime); }
+.language-options button[aria-checked="true"] span { color: var(--ink); }
+
+@media (max-width: 600px) {
+  .topbar-actions { gap: 8px; }
+  .language-trigger { min-width: 52px; height: 34px; padding: 0 8px; }
+  .language-options { position: fixed; top: 58px; right: 12px; width: min(220px, calc(100vw - 24px)); }
+}
+
+@media (max-width: 420px) {
+  .github-label { display: none; }
+  .github-link { padding: 0; border: 0; }
+  .star-badge { margin-left: 0; font-size: 12px; }
+}
