@@ -1,7 +1,7 @@
 window.OPC_COMMUNITY = {
   "repo": "WUBING2023/OPCStudio",
-  "generated": "2026-08-04T14:53:21.864301Z",
-  "stars": 0,
+  "generated": "2026-08-05T06:01:55.120068Z",
+  "stars": 1,
   "located": 0,
   "countries": [],
   "points": []
